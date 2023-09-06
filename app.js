@@ -20,7 +20,7 @@ jQuery.get('Balloon_Data.csv', function(data) {
     balloon_data.shift();
     balloon_data.pop();
     for (i in balloon_data){
-        document.querySelector("select#balloon_type").innerHTML+="<option value=\""+i+"\">"+balloon_data[i][0]+"</option>";
+        document.querySelector("select#balloonType").innerHTML+="<option value=\""+i+"\">"+balloon_data[i][0]+"</option>";
     }
 });
 
@@ -29,7 +29,7 @@ function saveData(balloonName) {
     let form2 = {};
     weightData = document.querySelector("form#weight");
     locationData = document.querySelector("form#location");
-
+    form1.balloonType = weightData.querySelector("select#balloonType").value
     form1.envelopeKG = weightData.querySelector("#envelopeKG").value;
     form1.basketKG = weightData.querySelector("#basketKG").value;
     form1.burnerKG = weightData.querySelector("#burnerKG").value;
@@ -88,8 +88,10 @@ function getAllData(){
 
 function lookupBalloonType(){
     formData = document.querySelector("form#weight");
-    balloonIndex = Number(formData.querySelector("select#balloon_type").value);
+    balloonIndex = Number(formData.querySelector("select#balloonType").value);
     document.querySelector("a#volumeM").textContent = "Balloon Volume in m^3: " + balloon_data[balloonIndex][3];
+    calcTotalKG()
+    calcLift()
 }
 
 function calcTotalKG(){
@@ -146,10 +148,11 @@ function loadSaved(){
     savedName = document.querySelector("select#savedBalloons").innerText;
     form1 = getData(savedName+'1');
     form2 = getData(savedName+'2');
-    console.log(form1);
-    console.log(form2);
+    // console.log(form1);
+    // console.log(form2);
     weightData = document.querySelector("form#weight");
     locationData = document.querySelector("form#location");
+    weightData.querySelector("select#balloonType").value = form1.balloonType;
     weightData.querySelector("#envelopeKG").value = form1.envelopeKG;
     weightData.querySelector("#basketKG").value = form1.basketKG;
     weightData.querySelector("#burnerKG").value = form1.burnerKG;
@@ -178,8 +181,7 @@ function loadSaved(){
     locationData.querySelector("#tempMax").value = form2.tempMax;
     document.querySelector("input[name=altitudeTO]#"+form2.altitudeTOUnit).checked = true
     document.querySelector("input[name=altitudeMax]#"+form2.altitudeMaxUnit).checked = true
-    // locationData.querySelector("input[name=altitudeTO]:checked") = form2.altitudeTOUnit;
-    // locationData.querySelector("input[name=altitudeMax]:checked") = form2.altitudeMaxUnit;
+    lookupBalloonType()
     calcTotalKG()
     calcLift()
 

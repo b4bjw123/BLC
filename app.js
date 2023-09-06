@@ -1,7 +1,7 @@
 // let com = [];
 let balloon_data = [];
 jQuery.get('Balloon_Data.csv', function(data) {
-    if (data.search("\r\n")) {
+    if (data.search("\r\n")>0) {
         com = data.split("\r\n");
     } else {
         com = data.split("\n");

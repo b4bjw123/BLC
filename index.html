@@ -1,124 +1,146 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Ballon Load Calculator</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <meta name="description" content="Hot Air Balloon Load Calculator">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css">
-        <link rel="manifest" href="./manifest.json">
-        <script src="app.js" async defer></script>
-        <script>
-          if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-              navigator.serviceWorker.register('./sw.js');
-            });
-          }
-        </script>
-    </head>
-    <body>
-        <form id="weight">
-            <label>Balloon Type/Size</label>
-            <select id="balloon_type" name="type" onchange="lookupBalloonType()"></select>
-            <br>
-            <a id="volumeM">Balloon Volume in m^3: N/A</a>
-            <br>
-            <label>Envelope Weight KG</label>
-            <input type="number" id="envelopeKG" onchange="calcTotalKG()">
-            <br>
-            <label>Basket Weight KG</label>
-            <input type="number" id="basketKG" onchange="calcTotalKG()">
-            <br>
-            <label>Burner Weight KG</label>
-            <input type="number" id="burnerKG" onchange="calcTotalKG()">
-            <br>
-            <label>Tank 1 Weight KG</label>
-            <input type="number" id="tank1KG" onchange="calcTotalKG()">
-            <br>
-            <label>Tank 2 Weight KG</label>
-            <input type="number" id="tank2KG" onchange="calcTotalKG()">
-            <br>
-            <label>Tank 3 Weight KG</label>
-            <input type="number" id="tank3KG" onchange="calcTotalKG()">
-            <br>
-            <label>Tank 4 Weight KG</label>
-            <input type="number" id="tank4KG" onchange="calcTotalKG()">
-            <br>
-            <label>Tank 5 Weight KG</label>
-            <input type="number" id="tank5KG" onchange="calcTotalKG()">
-            <br>
-            <label>Tank 6 Weight KG</label>
-            <input type="number" id="tank6KG" onchange="calcTotalKG()">
-            <br>
-            <label>Tank 7 Weight KG</label>
-            <input type="number" id="tank7KG" onchange="calcTotalKG()">
-            <br>
-            <label>Tank 8 Weight KG</label>
-            <input type="number" id="tank8KG" onchange="calcTotalKG()">
-            <br>
-            <a id="totalKitKG">Total Equipment Weight KG: 0</a>
-            <br>
-            <label>Pilot Weight KG</label>
-            <input type="number" id="pilotKG" onchange="calcTotalKG()">
-            <br>
-            <label>Passenger 1 Weight KG</label>
-            <input type="number" id="pax1KG" onchange="calcTotalKG()">
-            <br>
-            <label>Passenger 2 Weight KG</label>
-            <input type="number" id="pax2KG" onchange="calcTotalKG()">
-            <br>
-            <label>Passenger 3 Weight KG</label>
-            <input type="number" id="pax3KG" onchange="calcTotalKG()">
-            <br>
-            <label>Passenger 4 Weight KG</label>
-            <input type="number" id="pax4KG" onchange="calcTotalKG()">
-            <br>
-            <label>Passenger 5 Weight KG</label>
-            <input type="number" id="pax5KG" onchange="calcTotalKG()">
-            <br>
-            <label>Passenger 6 Weight KG</label>
-            <input type="number" id="pax6KG" onchange="calcTotalKG()">
-            <br>
-            <label>Passenger 7 Weight KG</label>
-            <input type="number" id="pax7KG" onchange="calcTotalKG()">
-            <br>
-            <label>Passenger 8 Weight KG</label>
-            <input type="number" id="pax8KG" onchange="calcTotalKG()">
-            <br>
-            <a id="totalPaxKG">Total Occupant Weight KG: 0</a>
-            <br>
-            <a id="totalUpKG">Total All Up Weight KG: 0</a>
-        </form>
-        <form id="location" onchange="calcLift()">
-            <label>Takeoff Altitude</label>
-            <input type="number" id="altitudeTO">
-            <input type="radio" name="altitudeTO" value="1" id="m" checked>m
-            <input type="radio" name="altitudeTO" value="3.281" id="ft">ft
-            <br>
-            <label>Takeoff Temperature &deg C</label>
-            <input type="number" id="tempTO">
-            <br>
-            <label>QNH mbar</label>
-            <input type="number" id="qnh">
-            <br>
-            <label>Maximum Altitude</label>
-            <input type="number" id="altitudeMax">
-            <input type="radio" name="altitudeMax" value="1" id="m" checked>m
-            <input type="radio" name="altitudeMax" value="3.281" id="ft">ft
-            <br>
-            <label>Envelope Maximum Temp &deg C</label>
-            <input type="number" id="tempMax">
-            <br>
-            <label>Total Lift KG</label>
-            <a id="totalLift"></a>
-            <br>
-            <label>Excess Lift KG</label>
-            <a id="excessLift"></a>
-            <br>
-        </form>
-        <a id="test"></a>
-        
-    </body>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ballon Load Calculator</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta name="description" content="Hot Air Balloon Load Calculator">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="./manifest.json">
+    <script src="app.js" async defer></script>
+    <script>
+            if ('serviceWorker' in navigator) {
+              window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js');
+              });
+            }
+          </script>
+  </head>
+
+  <body>
+    <div id="savedBalloons">
+      <h4>Saved Balloons</h4>
+      <label>Balloon Name: </label>
+      <select id="savedBalloons">
+      </select>
+      <input type="submit" onclick="loadSaved()">
+    </div>
+    <br><br>
+    <form id="weight">
+      <label>Balloon Type/Size</label>
+      <select id="balloon_type" name="type" onchange="lookupBalloonType()"></select>
+      <br>
+      <a id="volumeM">Balloon Volume in m^3: N/A</a>
+      <br>
+      <label>Envelope Weight KG</label>
+      <input type="number" id="envelopeKG" onchange="calcTotalKG()">
+      <br>
+      <label>Basket Weight KG</label>
+      <input type="number" id="basketKG" onchange="calcTotalKG()">
+      <br>
+      <label>Burner Weight KG</label>
+      <input type="number" id="burnerKG" onchange="calcTotalKG()">
+      <br>
+      <label>Tank 1 Weight KG</label>
+      <input type="number" id="tank1KG" onchange="calcTotalKG()">
+      <br>
+      <label>Tank 2 Weight KG</label>
+      <input type="number" id="tank2KG" onchange="calcTotalKG()">
+      <br>
+      <label>Tank 3 Weight KG</label>
+      <input type="number" id="tank3KG" onchange="calcTotalKG()">
+      <br>
+      <label>Tank 4 Weight KG</label>
+      <input type="number" id="tank4KG" onchange="calcTotalKG()">
+      <br>
+      <label>Tank 5 Weight KG</label>
+      <input type="number" id="tank5KG" onchange="calcTotalKG()">
+      <br>
+      <label>Tank 6 Weight KG</label>
+      <input type="number" id="tank6KG" onchange="calcTotalKG()">
+      <br>
+      <label>Tank 7 Weight KG</label>
+      <input type="number" id="tank7KG" onchange="calcTotalKG()">
+      <br>
+      <label>Tank 8 Weight KG</label>
+      <input type="number" id="tank8KG" onchange="calcTotalKG()">
+      <br>
+      <a id="totalKitKG">Total Equipment Weight KG: 0</a>
+      <br>
+      <label>Pilot Weight KG</label>
+      <input type="number" id="pilotKG" onchange="calcTotalKG()">
+      <br>
+      <label>Passenger 1 Weight KG</label>
+      <input type="number" id="pax1KG" onchange="calcTotalKG()">
+      <br>
+      <label>Passenger 2 Weight KG</label>
+      <input type="number" id="pax2KG" onchange="calcTotalKG()">
+      <br>
+      <label>Passenger 3 Weight KG</label>
+      <input type="number" id="pax3KG" onchange="calcTotalKG()">
+      <br>
+      <label>Passenger 4 Weight KG</label>
+      <input type="number" id="pax4KG" onchange="calcTotalKG()">
+      <br>
+      <label>Passenger 5 Weight KG</label>
+      <input type="number" id="pax5KG" onchange="calcTotalKG()">
+      <br>
+      <label>Passenger 6 Weight KG</label>
+      <input type="number" id="pax6KG" onchange="calcTotalKG()">
+      <br>
+      <label>Passenger 7 Weight KG</label>
+      <input type="number" id="pax7KG" onchange="calcTotalKG()">
+      <br>
+      <label>Passenger 8 Weight KG</label>
+      <input type="number" id="pax8KG" onchange="calcTotalKG()">
+      <br>
+      <a id="totalPaxKG">Total Occupant Weight KG: 0</a>
+      <br>
+      <a id="totalUpKG">Total All Up Weight KG: 0</a>
+    </form>
+    <form id="location" onchange="calcLift()">
+      <label>Takeoff Altitude</label>
+      <input type="number" id="altitudeTO">
+      <input type="radio" name="altitudeTO" value="1" id="m" checked>m
+      <input type="radio" name="altitudeTO" value="3.281" id="ft">ft
+      <br>
+      <label>Takeoff Temperature &deg C</label>
+      <input type="number" id="tempTO">
+      <br>
+      <label>QNH mbar</label>
+      <input type="number" id="qnh">
+      <br>
+      <label>Maximum Altitude</label>
+      <input type="number" id="altitudeMax">
+      <input type="radio" name="altitudeMax" value="1" id="m" checked>m
+      <input type="radio" name="altitudeMax" value="3.281" id="ft">ft
+      <br>
+      <label>Envelope Maximum Temp &deg C</label>
+      <input type="number" id="tempMax">
+      <br>
+      <label>Total Lift KG</label>
+      <a id="totalLift"></a>
+      <br>
+      <label>Excess Lift KG</label>
+      <a id="excessLift"></a>
+      <br>
+    </form>
+    <div id="deleteData">
+      <h4>Manage Data:</h4>
+      <label>Delete:</label>
+      <select id="deleteBalloons">
+      </select>
+      <input type="submit" onclick="deleteBalloon()">
+    </div>
+    <div id="saveData">
+        <h4>Save Balloon</h4>
+        <label>Input Balloon Name:</label>
+        <input type="text" id="newBalloonName">
+        <input type="submit" onclick="saveBalloon()">
+    </div>
+  </body>
+
 </html>

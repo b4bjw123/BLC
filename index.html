@@ -28,7 +28,7 @@
       <label>Balloon Name: </label><br>
       <select id="savedBalloons">
       </select>
-      <input type="submit" onclick="loadSaved()">
+      <input type="submit" value="Load" onclick="loadSaved()">
     </div>
     <br>
     <div id="weight">
@@ -126,7 +126,7 @@
       <input type="number" id="tempTO">
       <br>
       <label>QNH mbar</label><br>
-      <input type="number" id="qnh">
+      <input type="number" id="qnh" value="1013">
       <br>
       <label>Maximum Altitude</label><br>
       <input type="number" id="altitudeMax">
@@ -134,7 +134,7 @@
       <input type="radio" name="altitudeMax" value="3.281" id="ft">ft
       <br>
       <label>Envelope Maximum Temp &deg C</label><br>
-      <input type="number" id="tempMax">
+      <input type="number" id="tempMax" value="100">
       <br>
     </form>
     <div id="buttons">
@@ -155,13 +155,13 @@
       <label>Delete:</label><br>
       <select id="deleteBalloons">
       </select>
-      <input type="submit" onclick="deleteBalloon()">
+      <input type="submit" value="Delete" onclick="deleteBalloon()">
     </div>
     <div id="saveData">
         <h4>Save Balloon</h4>
         <label>Input Balloon Name:</label><br>
         <input type="text" id="newBalloonName">
-        <input type="submit" onclick="saveBalloon()">
+        <input type="submit" value="Save" onclick="saveBalloon()">
     </div>
   </body>
 

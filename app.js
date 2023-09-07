@@ -74,6 +74,7 @@ function getData(balloonName) {
 }
 
 function deleteData(balloonName){ 
+    console.log("delete: "+balloonName);
     window.localStorage.removeItem(balloonName+'1');
     window.localStorage.removeItem(balloonName+'2');
 }
@@ -200,14 +201,15 @@ function findSavedData(){
 }
 
 function deleteBalloon(){
-    balloonName = document.querySelector("select#savedBalloons").options[document.querySelector("select#savedBalloons").selectedIndex].text;
+    balloonName = document.querySelector("select#deleteBalloons").options[document.querySelector("select#deleteBalloons").selectedIndex].text;
     deleteData(balloonName);
+    location.reload();
 }
 
 function saveBalloon(){
     balloonName = document.querySelector("#newBalloonName").value;
     saveData(balloonName);
-    location.reload;
+    location.reload();
 }
 
 function editWeight(){

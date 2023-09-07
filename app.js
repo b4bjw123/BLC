@@ -1,6 +1,7 @@
 
 let balloon_data = [];
-let totalKitKG,totalPaxKG = 0;
+let totalKitKG = 0;
+let totalPaxKG = 0;
 let altitudeTO,tempTO,altitudeMax = 0;
 let qnh = 1013.25;
 let tempMax = 100;
@@ -106,7 +107,7 @@ function calcTotalKG(){
                 Number(formData.querySelector("input#burnerKG").value) + 
                 Number(formData.querySelector("input#basketKG").value) + 
                 Number(formData.querySelector("input#envelopeKG").value)
-    formData.querySelector("a#totalKitKG").textContent = "Total Equipment Weight KG: " + totalKitKG;
+    document.querySelector("a#totalKitKG").textContent = "Total Equipment Weight KG: " + totalKitKG;
 
     totalPaxKG = Number(formData.querySelector("input#pilotKG").value) +
                     Number(formData.querySelector("input#pax1KG").value) +
@@ -117,8 +118,8 @@ function calcTotalKG(){
                     Number(formData.querySelector("input#pax6KG").value) +
                     Number(formData.querySelector("input#pax7KG").value) +
                     Number(formData.querySelector("input#pax8KG").value)
-    formData.querySelector("a#totalPaxKG").textContent = "Total Occupant Weight KG: " + totalPaxKG;
-    formData.querySelector("a#totalUpKG").textContent = "Total All Up Weight KG: " + (totalKitKG + totalPaxKG);
+    document.querySelector("a#totalPaxKG").textContent = "Total Occupant Weight KG: " + totalPaxKG;
+    document.querySelector("a#totalUpKG").textContent = "Total All Up Weight KG: " + (totalKitKG + totalPaxKG);
     calcLift()
 }
 
@@ -134,12 +135,12 @@ function calcLift(){
     hPaFlight = qnh*Math.pow((1-((0.0065*altitudeMax/288.16))),5.256);
     totalLift = 0.3484*Number(balloon_data[balloonIndex][3])*hPaFlight*((1/(tempFlight+273.16))-(1/(tempMax+273.16)));
     excessLift = totalLift-(totalKitKG + totalPaxKG);
-    formData.querySelector("a#totalLift").textContent = totalLift;
-    formData.querySelector("a#excessLift").textContent = excessLift;
+    document.querySelector("a#totalLift").textContent = "Total Lift KG: " + totalLift;
+    document.querySelector("a#excessLift").textContent = "Excess Lift KG: " + excessLift;
     if (excessLift<0){
-        formData.querySelector("a#excessLift").style.color = "red";
+        document.querySelector("a#excessLift").style.color = "red";
     } else {
-        formData.querySelector("a#excessLift").style.color = "black";
+        document.querySelector("a#excessLift").style.color = "black";
     }
 }
 
@@ -206,6 +207,61 @@ function deleteBalloon(){
 function saveBalloon(){
     balloonName = document.querySelector("#newBalloonName").value;
     saveData(balloonName);
+}
+
+function editWeight(){
+    document.querySelector("div#savedBalloons").style.display = "none";
+    document.querySelector("div#buttons").style.display = "none";
+    document.querySelector("div#lift").style.display = "none";
+    document.querySelector("div#deleteData").style.display = "none";
+    document.querySelector("div#saveData").style.display = "none";
+    document.querySelector("form#weight").style.display = "block";
+    editEquipment()
+}
+
+function editFlight(){
+    document.querySelector("div#savedBalloons").style.display = "none";
+    document.querySelector("div#buttons").style.display = "none";
+    document.querySelector("div#lift").style.display = "none";
+    document.querySelector("div#deleteData").style.display = "none";
+    document.querySelector("div#saveData").style.display = "none";
+    document.querySelector("div#weight").style.display = "none";
+    document.querySelector("form#location").style.display = "block";
+}
+
+function editEquipment(){
+    document.querySelector("input#editEquipmentB").style.background = "lightgrey";
+    document.querySelector("input#editPaxB").style.background = "";
+    document.querySelector("div#equipment").style.display = "block";
+    document.querySelector("div#occupants").style.display = "none";
+}
+
+function editPax(){
+    document.querySelector("input#editEquipmentB").style.background = "";
+    document.querySelector("input#editPaxB").style.background = "lightgrey";
+    document.querySelector("div#equipment").style.display = "none";
+    document.querySelector("div#occupants").style.display = "block";
+}
+
+function editEquipmentDone(){
+    document.querySelector("div#savedBalloons").style.display = "block";
+    document.querySelector("div#buttons").style.display = "block";
+    document.querySelector("div#lift").style.display = "block";
+    document.querySelector("div#deleteData").style.display = "block";
+    document.querySelector("div#saveData").style.display = "block";
+    document.querySelector("form#weight").style.display = "none";
+    findSavedData()
+}
+
+function editFlightDone(){
+    document.querySelector("div#savedBalloons").style.display = "block";
+    document.querySelector("div#buttons").style.display = "block";
+    document.querySelector("div#lift").style.display = "block";
+    document.querySelector("div#deleteData").style.display = "block";
+    document.querySelector("div#saveData").style.display = "block";
+    document.querySelector("div#weight").style.display = "block";
+    document.querySelector("form#location").style.display = "none";
+    findSavedData()
 }
 
 findSavedData()

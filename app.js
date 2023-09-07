@@ -1,5 +1,4 @@
 
-// let com = [];
 let balloon_data = [];
 let totalKitKG,totalPaxKG = 0;
 let altitudeTO,tempTO,altitudeMax = 0;

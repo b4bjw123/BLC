@@ -136,8 +136,8 @@ function calcLift(){
     hPaFlight = qnh*Math.pow((1-((0.0065*altitudeMax/288.16))),5.256);
     totalLift = 0.3484*Number(balloon_data[balloonIndex][3])*hPaFlight*((1/(tempFlight+273.16))-(1/(tempMax+273.16)));
     excessLift = totalLift-(totalKitKG + totalPaxKG);
-    document.querySelector("a#totalLift").textContent = "Total Lift KG: " + totalLift;
-    document.querySelector("a#excessLift").textContent = "Excess Lift KG: " + excessLift;
+    document.querySelector("a#totalLift").textContent = "Total Lift KG: " + Math.round(totalLift);
+    document.querySelector("a#excessLift").textContent = "Excess Lift KG: " + Math.round(excessLift);
     if (excessLift<0){
         document.querySelector("a#excessLift").style.color = "red";
     } else {

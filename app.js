@@ -145,7 +145,7 @@ function calcLift(){
 }
 
 function loadSaved(){
-    savedName = document.querySelector("select#savedBalloons").innerText;
+    savedName = document.querySelector("select#savedBalloons").options[document.querySelector("select#savedBalloons").selectedIndex].text;
     form1 = getData(savedName+'1');
     form2 = getData(savedName+'2');
     // console.log(form1);

@@ -200,7 +200,7 @@ function findSavedData(){
 }
 
 function deleteBalloon(){
-    balloonName = document.querySelector("#deleteBalloons").innerText;
+    balloonName = document.querySelector("select#savedBalloons").options[document.querySelector("select#savedBalloons").selectedIndex].text;
     deleteData(balloonName);
 }
 

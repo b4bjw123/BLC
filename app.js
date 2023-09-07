@@ -230,7 +230,7 @@ function editFlight(){
 }
 
 function editEquipment(){
-    document.querySelector("input#editEquipmentB").style.background = "lightgrey";
+    document.querySelector("input#editEquipmentB").style.background = "burlywood";
     document.querySelector("input#editPaxB").style.background = "";
     document.querySelector("div#equipment").style.display = "block";
     document.querySelector("div#occupants").style.display = "none";
@@ -238,7 +238,7 @@ function editEquipment(){
 
 function editPax(){
     document.querySelector("input#editEquipmentB").style.background = "";
-    document.querySelector("input#editPaxB").style.background = "lightgrey";
+    document.querySelector("input#editPaxB").style.background = "burlywood";
     document.querySelector("div#equipment").style.display = "none";
     document.querySelector("div#occupants").style.display = "block";
 }

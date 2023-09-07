@@ -1,3 +1,16 @@
+*{
+    background-color: cadetblue;
+}
+
+input {
+    background-color: wheat;
+}
+
+select {
+    background-color: wheat;
+}
+
+
 h1{
     text-align: center;
     margin-bottom: 0px;

@@ -207,6 +207,7 @@ function deleteBalloon(){
 function saveBalloon(){
     balloonName = document.querySelector("#newBalloonName").value;
     saveData(balloonName);
+    location.reload;
 }
 
 function editWeight(){

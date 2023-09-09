@@ -12,13 +12,13 @@
     <link rel="manifest" href="./manifest.json">
     <link rel="icon" type="image/x-icon" href="icon-512.png">
     <script src="app.js" async defer></script>
-    <script>
+    <!-- <script>
             if ('serviceWorker' in navigator) {
               window.addEventListener('load', () => {
                 navigator.serviceWorker.register('./sw.js');
               });
             }
-          </script>
+          </script> -->
   </head>
 
   <body>
@@ -41,8 +41,9 @@
       <br>
     </div>
     <form id="weight">
-      <label>Balloon Type/Size</label><br>
-      <select id="balloonType" name="type" onchange="lookupBalloonType()"></select>
+      <label>Balloon Size ft<sup>3</sup>:</label><br>
+      <!-- <select id="balloonType" name="type" onchange="lookupBalloonType()"></select> -->
+      <input type="number" id="balloonSize" onchange="calcBalloonSize()">
       <br>
       <a id="volumeM">Balloon Volume in m^3: N/A</a>
       <br>
@@ -120,8 +121,8 @@
       <br>
       <label>Takeoff Altitude</label><br>
       <input type="number" id="altitudeTO">
-      <input type="radio" name="altitudeTO" value="1" id="m" checked>m
-      <input type="radio" name="altitudeTO" value="3.281" id="ft">ft
+      <input type="radio" name="altitudeTO" value="1" id="m">m
+      <input type="radio" name="altitudeTO" value="3.281" id="ft" checked>ft
       <br>
       <label>Takeoff Temperature &deg C</label><br>
       <input type="number" id="tempTO">
@@ -131,8 +132,8 @@
       <br>
       <label>Maximum Altitude</label><br>
       <input type="number" id="altitudeMax">
-      <input type="radio" name="altitudeMax" value="1" id="m" checked>m
-      <input type="radio" name="altitudeMax" value="3.281" id="ft">ft
+      <input type="radio" name="altitudeMax" value="1" id="m">m
+      <input type="radio" name="altitudeMax" value="3.281" id="ft" checked>ft
       <br>
       <label>Envelope Maximum Temp &deg C</label><br>
       <input type="number" id="tempMax" value="100">

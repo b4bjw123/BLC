@@ -7,29 +7,14 @@ let qnh = 1013.25;
 let tempMax = 100;
 let balloonIndex = 0;
 let balloonList = [];
-jQuery.get('Balloon_Data.csv', function(data) {
-    if (data.search("\r\n")>0) {
-        com = data.split("\r\n");
-    } else {
-        com = data.split("\n");
-    }
-    for (i in com) {
-        balloon = com[i].split(",");
-        balloon_data.push(balloon);
-    }
-    balloon_data.shift();
-    balloon_data.pop();
-    for (i in balloon_data){
-        document.querySelector("select#balloonType").innerHTML+="<option value=\""+i+"\">"+balloon_data[i][0]+"</option>";
-    }
-});
+let balloonSize = 0;
 
 function saveData(balloonName) {
     let form1 = {};
     let form2 = {};
     weightData = document.querySelector("form#weight");
     locationData = document.querySelector("form#location");
-    form1.balloonType = weightData.querySelector("select#balloonType").value
+    form1.balloonSize = balloonSize;
     form1.envelopeKG = weightData.querySelector("#envelopeKG").value;
     form1.basketKG = weightData.querySelector("#basketKG").value;
     form1.burnerKG = weightData.querySelector("#burnerKG").value;
@@ -87,13 +72,13 @@ function getAllData(){
     return balloonList;
 }
 
-function lookupBalloonType(){
-    formData = document.querySelector("form#weight");
-    balloonIndex = Number(formData.querySelector("select#balloonType").value);
-    document.querySelector("a#volumeM").textContent = "Balloon Volume in m^3: " + balloon_data[balloonIndex][3];
-    calcTotalKG()
-    calcLift()
-}
+// function lookupBalloonType(){
+//     formData = document.querySelector("form#weight");
+//     balloonIndex = Number(formData.querySelector("select#balloonType").value);
+//     document.querySelector("a#volumeM").textContent = "Balloon Volume in m^3: " + balloonSize;
+//     calcTotalKG()
+//     calcLift()
+// }
 
 function calcTotalKG(){
     formData = document.querySelector("form#weight");
@@ -124,6 +109,15 @@ function calcTotalKG(){
     calcLift()
 }
 
+function calcBalloonSize(){
+    formData = document.querySelector("form#weight");
+    let balloonSizeInput = Number(formData.querySelector("input#balloonSize").value);
+    balloonSize = balloonSizeInput/35.315;
+    document.querySelector("a#volumeM").textContent = "Balloon Volume in m^3: " + balloonSize;
+    calcTotalKG();
+    calcLift();
+}
+
 function calcLift(){
     formData = document.querySelector("form#location");
     altitudeTO = Number(formData.querySelector("input#altitudeTO").value)/Number(formData.querySelector("input[name=altitudeTO]:checked").value);
@@ -134,7 +128,7 @@ function calcLift(){
 
     tempFlight = tempTO - (0.0065*(altitudeMax-altitudeTO));
     hPaFlight = qnh*Math.pow((1-((0.0065*altitudeMax/288.16))),5.256);
-    totalLift = 0.3484*Number(balloon_data[balloonIndex][3])*hPaFlight*((1/(tempFlight+273.16))-(1/(tempMax+273.16)));
+    totalLift = 0.3484*balloonSize*hPaFlight*((1/(tempFlight+273.16))-(1/(tempMax+273.16)));
     excessLift = totalLift-(totalKitKG + totalPaxKG);
     document.querySelector("a#totalLift").textContent = "Total Lift KG: " + Math.round(totalLift);
     document.querySelector("a#excessLift").textContent = "Excess Lift KG: " + Math.round(excessLift);
@@ -153,7 +147,8 @@ function loadSaved(){
     // console.log(form2);
     weightData = document.querySelector("form#weight");
     locationData = document.querySelector("form#location");
-    weightData.querySelector("select#balloonType").value = form1.balloonType;
+    // weightData.querySelector("select#balloonType").value = form1.balloonType;
+    balloonSize = form1.balloonSize;
     weightData.querySelector("#envelopeKG").value = form1.envelopeKG;
     weightData.querySelector("#basketKG").value = form1.basketKG;
     weightData.querySelector("#burnerKG").value = form1.burnerKG;

@@ -267,4 +267,6 @@ function editFlightDone(){
     findSavedData()
 }
 
-findSavedData()
+window.onload = function () { 
+    findSavedData()
+}

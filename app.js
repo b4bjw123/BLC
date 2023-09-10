@@ -72,14 +72,6 @@ function getAllData(){
     return balloonList;
 }
 
-// function lookupBalloonType(){
-//     formData = document.querySelector("form#weight");
-//     balloonIndex = Number(formData.querySelector("select#balloonType").value);
-//     document.querySelector("a#volumeM").textContent = "Balloon Volume in m^3: " + balloonSize;
-//     calcTotalKG()
-//     calcLift()
-// }
-
 function calcTotalKG(){
     formData = document.querySelector("form#weight");
     totalKitKG = Number(formData.querySelector("input#tank1KG").value) + 
@@ -177,7 +169,6 @@ function loadSaved(){
     locationData.querySelector("#tempMax").value = form2.tempMax;
     document.querySelector("input[name=altitudeTO]#"+form2.altitudeTOUnit).checked = true
     document.querySelector("input[name=altitudeMax]#"+form2.altitudeMaxUnit).checked = true
-    lookupBalloonType()
     calcTotalKG()
     calcLift()
 

@@ -1,0 +1,56 @@
+*{
+    background-color: cadetblue;
+}
+
+input {
+    background-color: wheat;
+}
+
+select {
+    background-color: wheat;
+}
+
+
+h1{
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+h4 {
+    margin-bottom: 0px;
+}
+
+form#weight {
+    display: none;
+}
+form#location {
+    display: none;
+}
+
+#editButton {
+    display: inline-flex;
+    padding-top: 5px;
+    padding-bottom  : 5px;
+    justify-content: center;
+    width: 100px;
+}
+
+input[type="button"] {
+    padding-top: 5px;
+    padding-bottom  : 5px;
+}
+
+select {
+    padding-top: 5px;
+    padding-bottom  : 5px;
+}
+
+input[type="submit"] {
+    padding-top: 5px;
+    padding-bottom  : 5px;
+}
+
+input[type="text"] {
+    padding-top: 5px;
+    padding-bottom  : 5px;
+}

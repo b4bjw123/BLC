@@ -9,17 +9,9 @@
     <meta name="description" content="Hot Air Balloon Load Calculator">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css">
-    <!-- <link rel="manifest" href="./manifest.json"> -->
     <link rel="icon" type="image/x-icon" href="icon-512.png">
     <script src="app.js" defer></script>
     <link rel="manifest" href="blc.webmanifest">
-    <!-- <script>
-            if ('serviceWorker' in navigator) {
-              window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js');
-              });
-            }
-          </script> -->
   </head>
 
   <body>
@@ -43,7 +35,6 @@
     </div>
     <form id="weight">
       <label>Balloon Size ft<sup>3:</sup></label><br>
-      <!-- <select id="balloonType" name="type" onchange="lookupBalloonType()"></select> -->
       <input type="number" id="balloonSize" onchange="calcBalloonSize()">
       <br>
       <a id="volumeM">Balloon Volume in m^3: N/A</a>
@@ -171,5 +162,4 @@
         <input type="submit" value="Save" onclick="saveBalloon()">
     </div>
   </body>
-
 </html>

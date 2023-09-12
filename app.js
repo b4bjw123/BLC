@@ -20,6 +20,7 @@ function saveData(balloonName) {
     weightData = document.querySelector("form#weight");
     locationData = document.querySelector("form#location");
     form1.balloonSize = balloonSize;
+    form1.balloonSizeInput = weightData.querySelector("#balloonSize").value;
     form1.envelopeKG = weightData.querySelector("#envelopeKG").value;
     form1.basketKG = weightData.querySelector("#basketKG").value;
     form1.burnerKG = weightData.querySelector("#burnerKG").value;
@@ -143,7 +144,7 @@ function loadSaved(){
     // console.log(form2);
     weightData = document.querySelector("form#weight");
     locationData = document.querySelector("form#location");
-    // weightData.querySelector("select#balloonType").value = form1.balloonType;
+    weightData.querySelector("#balloonSize").value = form1.balloonSizeInput;
     balloonSize = form1.balloonSize;
     weightData.querySelector("#envelopeKG").value = form1.envelopeKG;
     weightData.querySelector("#basketKG").value = form1.basketKG;

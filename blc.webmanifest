@@ -9,7 +9,7 @@
             "type": "image/png"
         }
     ],
-    "start_url": "/BLC_Dev/index.html",
+    "start_url": "/BLC/index.html",
     "display": "fullscreen",
     "theme_color": "#5F9EA0",
     "background_color": "#5F9EA0"

@@ -1,10 +1,10 @@
 self.addEventListener('install', (e) => {
     e.waitUntil(
       caches.open('blc-store').then((cache) => cache.addAll([
-        '/BLC_Dev/',
-        '/BLC_Dev/index.html',
-        '/BLC_Dev/app.js',
-        '/BLC_Dev/style.css'
+        '/BLC/',
+        '/BLC/index.html',
+        '/BLC/app.js',
+        '/BLC/style.css'
       ])),
     );
   });

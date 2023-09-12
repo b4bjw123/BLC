@@ -1,8 +1,3 @@
-if ('serviceWorker' in navigator) {
-navigator.serviceWorker
-    .register('/sw.js')
-    .then(() => { console.log('Service Worker Registered'); });
-}
 
 let balloon_data = [];
 let totalKitKG = 0;
@@ -57,6 +52,7 @@ function saveData(balloonName) {
 
 function getData(balloonName) {
 	let f1 = window.localStorage.getItem(balloonName);
+	// let f2 = window.localStorage.getItem(balloonName+'2');
 	if(f1){
         return JSON.parse(f1);
     }
@@ -75,6 +71,14 @@ function getAllData(){
     }
     return balloonList;
 }
+
+// function lookupBalloonType(){
+//     formData = document.querySelector("form#weight");
+//     balloonIndex = Number(formData.querySelector("select#balloonType").value);
+//     document.querySelector("a#volumeM").textContent = "Balloon Volume in m^3: " + balloonSize;
+//     calcTotalKG()
+//     calcLift()
+// }
 
 function calcTotalKG(){
     formData = document.querySelector("form#weight");

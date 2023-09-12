@@ -1,0 +1,16 @@
+{
+    "name": "Balloon Load Calculator",
+    "short_name": "blc",
+    "description": "Hot Air Balloon Load Calculator",
+    "icons": [
+        {
+            "src": "icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "/BLC_Dev/index.html",
+    "display": "fullscreen",
+    "theme_color": "#5F9EA0",
+    "background_color": "#5F9EA0"
+}

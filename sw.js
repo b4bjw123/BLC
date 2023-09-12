@@ -1,2 +1,17 @@
-if(!self.define){let e,s={};const i=(i,r)=>(i=new URL(i+".js",r).href,s[i]||new Promise((s=>{if("document"in self){const e=document.createElement("script");e.src=i,e.onload=s,document.head.appendChild(e)}else e=i,importScripts(i),s()})).then((()=>{let e=s[i];if(!e)throw new Error(`Module ${i} didn’t register its module`);return e})));self.define=(r,t)=>{const o=e||("document"in self?document.currentScript.src:"")||location.href;if(s[o])return;let n={};const d=e=>i(e,o),l={module:{uri:o},exports:n,require:d};s[o]=Promise.all(r.map((e=>l[e]||d(e)))).then((e=>(t(...e),n)))}}define(["./workbox-135dd8b2"],(function(e){"use strict";self.addEventListener("message",(e=>{e.data&&"SKIP_WAITING"===e.data.type&&self.skipWaiting()})),e.precacheAndRoute([{url:"app.js",revision:"f67181a9165e361a0d073909b0ca725d"},{url:"Balloon_Data.csv",revision:"0456d52597a82b74dabde700312f66df"},{url:"index.html",revision:"4a6de207e8fb054277690b9b02340b01"},{url:"style.css",revision:"d41d8cd98f00b204e9800998ecf8427e"}],{ignoreURLParametersMatching:[/^utm_/,/^fbclid$/]})}));
-//# sourceMappingURL=sw.js.map
+self.addEventListener('install', (e) => {
+    e.waitUntil(
+      caches.open('blc-store').then((cache) => cache.addAll([
+        '/BLC_Dev/',
+        '/BLC_Dev/index.html',
+        '/BLC_Dev/app.js',
+        '/BLC_Dev/style.css'
+      ])),
+    );
+  });
+  
+  self.addEventListener('fetch', (e) => {
+    console.log(e.request.url);
+    e.respondWith(
+      caches.match(e.request).then((response) => response || fetch(e.request)),
+    );
+  });

@@ -1,10 +1,10 @@
 self.addEventListener('install', (e) => {
     e.waitUntil(
       caches.open('blc-store').then((cache) => cache.addAll([
-        '/',
-        '/index.html',
-        '/app.js',
-        '/style.css',
+        '/BLC_Dev/',
+        '/BLC_Dev/index.html',
+        '/BLC_Dev/app.js',
+        '/BLC_Dev/style.css',
         // '/icon-512.png',
       ])),
     );

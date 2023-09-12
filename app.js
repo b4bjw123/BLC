@@ -1,6 +1,6 @@
 if ('serviceWorker' in navigator) {
 navigator.serviceWorker
-    .register('BLC_Dev/sw.js')
+    .register('/BLC_Dev/sw.js')
     .then(() => { console.log('Service Worker Registered'); });
 }
 

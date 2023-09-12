@@ -4,8 +4,7 @@ self.addEventListener('install', (e) => {
         '/BLC_Dev/',
         '/BLC_Dev/index.html',
         '/BLC_Dev/app.js',
-        '/BLC_Dev/style.css',
-        // '/icon-512.png',
+        '/BLC_Dev/style.css'
       ])),
     );
   });

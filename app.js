@@ -173,7 +173,6 @@ function loadSaved(){
     locationData.querySelector("#tempMax").value = form2.tempMax;
     document.querySelector("input[name=altitudeTO]#"+form2.altitudeTOUnit).checked = true
     document.querySelector("input[name=altitudeMax]#"+form2.altitudeMaxUnit).checked = true
-    lookupBalloonType()
     calcTotalKG()
     calcLift()
 
